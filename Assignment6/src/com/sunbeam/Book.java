@@ -1,20 +1,22 @@
 package com.sunbeam;
 
-class Book {
+public class Book {
 	private String isbn;
 	private double price;
 	private String authorName;
 	private int quantity;
-
+	
+	
 	public Book() {
+		
 	}
 
-	public Book(String isbn, double price, String authorName, int quantity) {
-		this.isbn = isbn;
-		this.price = price;
-		this.authorName = authorName;
-		this.quantity = quantity;
-	}
+public Book(String isbn, double price, String authorName, int quantity) {
+	this.isbn = isbn;
+	this.price = price;
+	this.authorName = authorName;
+	this.quantity = quantity;
+}
 
 	public String getIsbn() {
 		return isbn;
@@ -47,13 +49,25 @@ class Book {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
 	@Override
 	public String toString() {
-		return "Book [isbn=" + isbn + ", price=" + price + ", authorName=" + authorName + ", quantity=" + quantity
-				+ "]";
+		return String.format("Isbn : %s , Price : %.2f , Author Name : %s , Quantity : %d" , isbn , price , authorName , quantity);
+
 	}
 	
-	
-
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(this == obj) {
+			return true;
+		}
+		
+		if(!(obj instanceof Book)) {
+			return false;
+		}
+		Book book = (Book) obj;
+		return this.isbn.equals(book.isbn);
+	}
 }
